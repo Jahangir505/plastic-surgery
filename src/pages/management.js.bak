@@ -1,0 +1,31 @@
+// // pages/management.js
+// import { signIn, useSession } from 'next-auth/react';
+
+// const Management = () => {
+//   const { data: session } = useSession();
+
+//   const handleSignIn = async () => {
+//     await signIn('credentials', {
+//       email: 'alex@itexpertnow.com',
+//       password: 'RZvCWp6bCdDn9VjMQJ',
+//     });
+//   };
+
+//   return (
+//     <div>
+//       {session ? (
+//         <>
+//           <p>Welcome, {session.user.email}!</p>
+//           {/* Add management-related content here */}
+//         </>
+//       ) : (
+//         <>
+//           <p>Please sign in to access the management page.</p>
+//           <button onClick={handleSignIn}>Sign In</button>
+//         </>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Management;

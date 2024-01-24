@@ -1,0 +1,13 @@
+// // pages/_app.js
+// import { SessionProvider } from 'next-auth/react';
+// import { Provider } from 'next-auth/providers'; // Import your authentication provider (CredentialsProvider, GoogleProvider, etc.)
+
+// function MyApp({ Component, pageProps }) {
+//   return (
+//     <SessionProvider session={pageProps.session}>
+//       <Component {...pageProps} />
+//     </SessionProvider>
+//   );
+// }
+
+// export default MyApp;
