@@ -53,7 +53,7 @@ const SignUpForm = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          email: user.email,
+          email: user.email.toLowerCase(),
           password: user.password,
           profile: user,
           role: "User"
@@ -190,7 +190,7 @@ const SignUpForm = () => {
                       email: e.target.value
                     })
                   }
-                  value={user.email}
+                  value={user.email.toLowerCase()}
                 />
               </div>
               <Phone 
@@ -244,7 +244,7 @@ const SignUpForm = () => {
                 type="submit"
                 className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800"
               >
-                Sign in
+                Sign Up
               </button>
               <p className="text-sm font-light text-gray-500 text-gray-400">
                 Have an account?{" "}

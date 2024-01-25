@@ -8,14 +8,15 @@ import {
   UsersIcon
 } from "@heroicons/react/24/outline";
 
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const navigation = [
-  { name: "Management", href: "/management", icon: HomeIcon, current: true },
-  { name: "User", href: "/management/user", icon: UsersIcon, current: false },
-  { name: "Blog", href: "/management/blog", icon: DocumentDuplicateIcon, current: false },
+  { name: "Management", href: "/management", icon: HomeIcon, current: true, role: "" },
+  { name: "User", href: "/management/user", icon: UsersIcon, current: false, role: "Admin" },
+  { name: "Blog", href: "/management/blog", icon: DocumentDuplicateIcon, current: false, role:"" },
+  { name: "Subscriber", href: "/management/subscriber", icon: UsersIcon, current: false, role:"Admin" },
   
 ];
 
@@ -26,8 +27,10 @@ function classNames(...classes) {
 
 const Sidebar = () => {
   const route = useRouter();
+  const { data: session, status } = useSession();
   console.log(route.pathname.split("/")[2]);
   const path  = route.pathname.split("/")[2];
+  const filteredNavigation = navigation.filter(item => item.role === "" || item.role === session?.user?.roles);
   const handleLogout = async () => {
     await signOut({callbackUrl: "/"});
   };
@@ -36,7 +39,7 @@ const Sidebar = () => {
       <ul role="list" className="flex flex-1 flex-col gap-y-7">
         <li>
           <ul role="list" className="-mx-2 space-y-1">
-            {navigation.map((item) => (
+            {filteredNavigation.map((item) => (
               <li key={item.name}>
                 <Link
                   href={item.href}

@@ -35,7 +35,7 @@ const LoginForm = () => {
     try {
       const data = await signIn("credentials", {
         redirect: false,
-        email,
+        email: email.toLowerCase(),
         password,
         callbackUrl: "/management"
       });
@@ -66,11 +66,11 @@ const LoginForm = () => {
   };
   return (
     // <HomeLayout>
-    <section className="bg-gray-50 bg-gray-900">
+    <section className="bg-gray-900 md:h-screen">
       <Head>
         <title>Login | Plastic Edu Hub</title>
       </Head>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen  lg:py-0">
         <Link
           href="/"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 text-white"
@@ -103,6 +103,7 @@ const LoginForm = () => {
                   placeholder="name@company.com"
                   required=""
                   onChange={(e) => setEmail(e.target.value)}
+                  value={email.toLowerCase()}
                 />
               </div>
               <div>

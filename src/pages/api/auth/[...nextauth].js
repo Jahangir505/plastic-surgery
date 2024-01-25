@@ -16,7 +16,7 @@ export default NextAuth({
           // Find the user with the provided email
           const user = await usersCollection.findOne({ email });
           if (user && (await bcrypt.compare(password, user.password))) {
-            // console.log("Login User", user);
+            
             // If the passwords match, generate a JWT token
             const token = jwt.sign(
               { sub: user._id, email: user.email },
