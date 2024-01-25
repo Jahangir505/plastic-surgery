@@ -91,9 +91,9 @@ const Library = () => {
             <div class="max-w-lg">
               <div class="text-5xl text-red-800 font-bold">Ops!</div>
               <p class="text-2xl md:text-3xl text-red-800 font-light leading-normal">
-                Sorry you are not Subscriber.{" "}
+                Sorry you are not Subscriber.
               </p>
-              <p class="mb-8">You can't access this page. Please subscribe first and try again</p>
+              <p class="mb-8">You can not access this page. Please subscribe first and try again</p>
 
               <Link
                 href="/auth/login"
