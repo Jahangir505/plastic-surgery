@@ -16,7 +16,7 @@ export default NextAuth({
           // Find the user with the provided email
           const user = await usersCollection.findOne({ email });
           if (user && (await bcrypt.compare(password, user.password))) {
-            // console.log("Login User", user);
+            
             // If the passwords match, generate a JWT token
             const token = jwt.sign(
               { sub: user._id, email: user.email },
@@ -41,12 +41,12 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      console.log({token,user});
+      // console.log({token,user});
       user && (token.user = user)
       return token
     },
     async session({ session, token }) {
-      console.log({session,token});
+      // console.log({session,token});
       session.user = token.user
       return session
     },

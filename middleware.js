@@ -4,4 +4,4 @@ export { default } from "next-auth/middleware";
 
 // export default NextAuthConfig.auth;
 
-export const config = { matcher: ["/management/:path*", "/management/user"] };
+export const config = { matcher: ["/management/:path*", "/management/user", "/subscribe"] };

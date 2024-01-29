@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: false,
   compress: true,
   images: {
-    domains: ["plasticeduhub.itexpertnow.com", "flagcdn.com"],
+    domains: ["plasticeduhub.itexpertnow.com", "flagcdn.com", "localhost"],
     remotePatterns: [
       {
         protocol: "https",

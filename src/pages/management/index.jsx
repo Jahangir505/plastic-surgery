@@ -7,7 +7,7 @@ const Management = () => {
 
   return (
     <AdminLayout>
-      <h1 className="text-lg">Hi, {session?.user?.name ?? "Jhon Due"}</h1>
+      <h1 className="text-lg">Hi, {session?.user?.profile.firstName ?? "Jhon Due"}</h1>
       <h2>Welcome to Management</h2>
     </AdminLayout>
   );
