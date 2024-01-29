@@ -1,11 +1,7 @@
 import {
-  CalendarIcon,
-  ChartPieIcon,
-  Cog6ToothIcon,
   DocumentDuplicateIcon,
-  FolderIcon,
   HomeIcon,
-  UsersIcon
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut, useSession } from "next-auth/react";
@@ -13,14 +9,36 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const navigation = [
-  { name: "Management", href: "/management", icon: HomeIcon, current: true, role: "" },
-  { name: "User", href: "/management/user", icon: UsersIcon, current: false, role: "Admin" },
-  { name: "Blog", href: "/management/blog", icon: DocumentDuplicateIcon, current: false, role:"" },
-  { name: "Subscriber", href: "/management/subscriber", icon: UsersIcon, current: false, role:"Admin" },
-  { name: "Front Page", href: "/", icon: HomeIcon, current: false, role:"" },
-  
+  {
+    name: "Management",
+    href: "/management",
+    icon: HomeIcon,
+    current: true,
+    role: "",
+  },
+  {
+    name: "User",
+    href: "/management/user",
+    icon: UsersIcon,
+    current: false,
+    role: "Admin",
+  },
+  {
+    name: "Blog",
+    href: "/management/blog",
+    icon: DocumentDuplicateIcon,
+    current: false,
+    role: "",
+  },
+  {
+    name: "Subscriber",
+    href: "/management/subscriber",
+    icon: UsersIcon,
+    current: false,
+    role: "Admin",
+  },
+  { name: "Front Page", href: "/", icon: HomeIcon, current: false, role: "" },
 ];
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,10 +48,12 @@ const Sidebar = () => {
   const route = useRouter();
   const { data: session, status } = useSession();
   console.log(route.pathname.split("/")[2]);
-  const path  = route.pathname.split("/")[2];
-  const filteredNavigation = navigation.filter(item => item.role === "" || item.role === session?.user?.roles);
+  const path = route.pathname.split("/")[2];
+  const filteredNavigation = navigation.filter(
+    (item) => item.role === "" || item.role === session?.user?.roles
+  );
   const handleLogout = async () => {
-    await signOut({callbackUrl: "/"});
+    await signOut({ callbackUrl: "/" });
   };
   return (
     <nav className="flex flex-1 flex-col">
@@ -61,14 +81,23 @@ const Sidebar = () => {
 
         <li className="mt-auto">
           <span
-           onClick={handleLogout}
+            onClick={handleLogout}
             className="group cursor-pointer -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
           >
-            
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
-</svg>
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+              />
+            </svg>
             Logout
           </span>
         </li>
